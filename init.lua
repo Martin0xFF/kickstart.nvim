@@ -87,6 +87,13 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+--
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
+-- vim.g.netrw_winsize = 75
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -947,7 +954,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -970,10 +977,7 @@ require('lazy').setup({
   },
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
-vim.g.netrw_winsize = 75
-local o = vim.o
+vim.keymap.set('n', '<leader><tab>', '<cmd>NvimTreeToggle<CR>')
 
 vim.o.expandtab = true
 vim.o.smartindent = true
